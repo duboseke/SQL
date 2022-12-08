@@ -1,0 +1,33 @@
+--Create a clothing store database.
+
+CREATE TABLE clothing_store (id INTEGER PRIMARY KEY, name TEXT, price NUMERIC, quantity INTEGER, season TEXT);
+
+INSERT INTO clothing_store VALUES (1, "graphic tee", 15.99, 30, "all");
+INSERT INTO clothing_store VALUES (2, "tank top", 10.99, 25, "summer");
+INSERT INTO clothing_store VALUES (3, "long sleeve shirt", 19.99, 10, "winter");
+INSERT INTO clothing_store VALUES (4, "blue jeans", 49.99, 45, "all");
+INSERT INTO clothing_store VALUES (5, "yoga pants", 29.99, 28, "all");
+INSERT INTO clothing_store VALUES (6, "leggings", 19.99, 50, "all");
+INSERT INTO clothing_store VALUES (7, "running shorts", 14.99, 23, "summer");
+INSERT INTO clothing_store VALUES (8, "jean shorts", 25.99, 15, "summer");
+INSERT INTO clothing_store VALUES (9, "skirt", 23.50, 14, "summer");
+INSERT INTO clothing_store VALUES (10, "long dress", 29.99, 12, "all");
+INSERT INTO clothing_store VALUES (11, "hoodie", 39.99, 35, "winter");
+INSERT INTO clothing_store VALUES (12, "crewneck", 35.99, 29, "fall");
+INSERT INTO clothing_store VALUES (13, "socks", 5.99, 40, "all");
+INSERT INTO clothing_store VALUES (14, "thong", 12.99, 38, "all");
+INSERT INTO clothing_store VALUES (15, "bralette", 16.99, 22, "all");
+
+
+--Display the database ordered by price.
+
+SELECT * FROM clothing_store ORDER BY price;
+
+--What is the total sum of items instock?
+SELECT SUM(quantity) FROM clothing_store;
+
+--What is the total potential revenue of items instock?
+SELECT SUM(quantity*price) FROM clothing_store;
+
+--What is the average price of an item of clothing?
+SELECT AVG(price) FROM clothing_store;
