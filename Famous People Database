@@ -1,0 +1,48 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE famous_people (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER);
+
+    INSERT INTO famous_people (name, age) VALUES ("Jennifer Lawrence", 32);
+    INSERT INTO famous_people (name, age) VALUES ("Bradley Cooper", 47);
+    INSERT INTO famous_people (name, age) VALUES ("Leonardo DiCaprio", 48);
+    INSERT INTO famous_people (name, age) VALUES ("Jennifer Aniston", 53);
+    INSERT INTO famous_people (name, age) VALUES ("Jason Sudeikus", 47);
+    INSERT INTO famous_people (name, age) VALUES ("Margot Robbie", 32);
+    INSERT INTO famous_people (name, age) VALUES ("Matthew McConaughey", 53);
+    INSERT INTO famous_people (name, age) VALUES ("Jared Leto", 50);
+    INSERT INTO famous_people (name, age) VALUES ("Kate Hudson", 46);
+
+
+
+CREATE TABLE movies (movie_id INTEGER PRIMARY KEY AUTOINCREMENT, movie_name TEXT, release_year INTEGER, actor_id INTEGER);
+
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("The Hunger Games", 2012, 1);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("Don't Look Up", 2021, 1);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("Don't Look Up", 2021, 3);
+    INSERT INTO movies (movie_name, release_year, actor_ID) VALUES ("Silver Linings Playbook", 2012, 1);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("Failure to Launch", 2006, 7);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("Dallas Buyers Club", 2013, 7);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("Dallas Buyers Club", 2013, 8);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("We're the Millers", 2013, 4);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("We're the Millers", 2013, 5);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("Horrible Bosses", 2011, 4);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("Horrible Bosses", 2011, 5);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("Mother's Day", 2016, 4);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("Mother's Day", 2016, 5);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("Mother's Day", 2016, 9);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("He's Just Not That Into You", 2009, 2);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("He's Just Not That Into You", 2009, 4);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("How to Lose a Guy in 10 Days", 2003, 7);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("How to Lose a Guy in 10 Days", 2003, 9);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("Fool's Gold", 2008, 7);
+    INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("Fool's Gold", 2008, 9);
+
+
+
+SELECT famous_people.name, famous_people.age,  A.movie_name AS MovieName1, B.movie_name AS MovieName2, C.movie_name AS MovieName3 
+    FROM famous_people
+    JOIN movies A, movies B, movies C
+    ON famous_people.id = a.actor_id AND famous_people.id = b.actor_id AND famous_people.id = c.actor_id
+    WHERE a.movie_name <> b.movie_name AND b.movie_name <> c.movie_name AND a.movie_name <> c.movie_name
+    GROUP BY famous_people.id
+    ORDER BY famous_people.age;
