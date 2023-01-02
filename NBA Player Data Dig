@@ -1,3 +1,5 @@
+-- Below are analytics pulled from the following data about NBA players.
+
 /*
 Source:
 https://www.kaggle.com/jacobbaruch/nba-player-of-the-week 
@@ -1366,16 +1368,41 @@ INSERT INTO players(Player,Team,Conference,Date,Position,Height,Weight,Age,Draft
 INSERT INTO players(Player,Team,Conference,Date,Position,Height,Weight,Age,Draft_Year,Seasons_in_league,Season,Season_short,Predraft_Team,Real_value,Height_CM,Weight_KG,Last_Season) VALUES ('Micheal Ray Richardson','New York Knicks',NULL,'Oct 28, 1979','PG','6''5',189,24,1978,1,'1979-1980',1980,'Montana',1.0,196,85,0);
 INSERT INTO players(Player,Team,Conference,Date,Position,Height,Weight,Age,Draft_Year,Seasons_in_league,Season,Season_short,Predraft_Team,Real_value,Height_CM,Weight_KG,Last_Season) VALUES ('Julius Erving','Philadelphia Sixers',NULL,'Oct 21, 1979','SF','6''6',200,30,1972,7,'1979-1980',1980,'Massachusetts',1.0,198,90,0);
 
+
 -- Team's player's average seasons in the league & average age
-SELECT Team, ROUND(AVG(Seasons_in_league)), ROUND(AVG(Age)) FROM players
+SELECT 
+   Team, 
+   ROUND(AVG(Seasons_in_league)), 
+   ROUND(AVG(Age)) 
+FROM players
 GROUP BY Team;
 
+
 -- Player with the maximum age and minimum age
-SELECT Player, MAX(Age), Position, Draft_Year FROM players;
-SELECT Player, MIN(Age), Position, Draft_Year FROM players;
+SELECT 
+   Player, 
+   MAX(Age), 
+   Position, 
+   Draft_Year
+FROM players;
+
+SELECT 
+   Player, 
+   MIN(Age), 
+   Position, 
+   Draft_Year 
+FROM players;
+
 
 -- Team's average height (cm) greater than 207cm or less than 198cm
-SELECT Team, ROUND(AVG(Height_CM)) AS avg_height_cm FROM players GROUP BY Team HAVING avg_height_cm > 207 OR avg_height_cm < 198;
+SELECT 
+   Team, 
+   ROUND(AVG(Height_CM)) AS avg_height_cm 
+FROM players 
+GROUP BY Team 
+   HAVING avg_height_cm > 207 
+   OR avg_height_cm < 198;
+
 
 -- Number of players drafted in each decade
 SELECT COUNT(*),
@@ -1389,5 +1416,13 @@ SELECT COUNT(*),
 FROM players
 GROUP BY decade_drafted;
 
+
 -- Centers with more than 7 seasons in the league
-SELECT Player, Position, Seasons_in_league FROM players WHERE Position = "C" AND Seasons_in_league > 7 ORDER BY Seasons_in_league;
+SELECT 
+   Player, 
+   Position, 
+   Seasons_in_league 
+FROM players 
+WHERE Position = "C" 
+   AND Seasons_in_league > 7 
+ORDER BY Seasons_in_league;
