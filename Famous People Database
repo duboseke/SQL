@@ -1,4 +1,4 @@
-/* Create table about the people and what they do here */
+/* Below are two tables created to hold information about famous people and movies */
 
 CREATE TABLE famous_people (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER);
 
@@ -38,11 +38,23 @@ CREATE TABLE movies (movie_id INTEGER PRIMARY KEY AUTOINCREMENT, movie_name TEXT
     INSERT INTO movies (movie_name, release_year, actor_id) VALUES ("Fool's Gold", 2008, 9);
 
 
+-- The following creates a list of actors and movies they starred in.
 
-SELECT famous_people.name, famous_people.age,  A.movie_name AS MovieName1, B.movie_name AS MovieName2, C.movie_name AS MovieName3 
-    FROM famous_people
-    JOIN movies A, movies B, movies C
-    ON famous_people.id = a.actor_id AND famous_people.id = b.actor_id AND famous_people.id = c.actor_id
-    WHERE a.movie_name <> b.movie_name AND b.movie_name <> c.movie_name AND a.movie_name <> c.movie_name
-    GROUP BY famous_people.id
+SELECT 
+    famous_people.name, famous_people.age,  
+    A.movie_name AS MovieName1, 
+    B.movie_name AS MovieName2, 
+    C.movie_name AS MovieName3 
+FROM famous_people
+JOIN 
+    movies A, 
+    movies B, 
+    movies C
+ON famous_people.id = a.actor_id 
+ AND famous_people.id = b.actor_id 
+ AND famous_people.id = c.actor_id
+WHERE a.movie_name <> b.movie_name 
+ AND b.movie_name <> c.movie_name 
+ AND a.movie_name <> c.movie_name
+GROUP BY famous_people.id
     ORDER BY famous_people.age;
