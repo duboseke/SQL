@@ -21,13 +21,18 @@ INSERT INTO clothing_store VALUES (15, "bralette", 16.99, 22, "all");
 
 --Display the database ordered by price.
 
-SELECT * FROM clothing_store ORDER BY price;
+SELECT * 
+FROM clothing_store 
+ORDER BY price;
 
 --What is the total sum of items instock?
-SELECT SUM(quantity) FROM clothing_store;
+SELECT SUM(quantity) 
+FROM clothing_store;
 
 --What is the total potential revenue of items instock?
-SELECT SUM(quantity*price) FROM clothing_store;
+SELECT SUM(quantity*price) 
+FROM clothing_store;
 
 --What is the average price of an item of clothing?
-SELECT AVG(price) FROM clothing_store;
+SELECT AVG(price) 
+FROM clothing_store;
